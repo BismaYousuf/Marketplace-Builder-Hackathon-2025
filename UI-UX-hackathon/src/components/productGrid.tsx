@@ -9,7 +9,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { EditProductDialog } from "./edit-product-dialog"
-import { ICard, IReturnSanityProduct, productCreateSanity, productDeleteSanity, productPostSanity, sanityFetch } from "@/services/sanityApi"
+import { Product, IReturnSanityProduct, productCreateSanity, productDeleteSanity, productPostSanity, sanityFetch } from "@/services/sanityApi"
 import { userPostSanity } from "@/services/userId"
 import { CreateProductDialog } from "./create-product-dialog"
 
@@ -17,12 +17,12 @@ import { CreateProductDialog } from "./create-product-dialog"
 
 
 export default function ProductsGrid() {
-  const [editingProduct, setEditingProduct] = useState<ICard | null>()
+  const [editingProduct, setEditingProduct] = useState<Product | null>()
   
   const [isChange, setIsChange] = useState<boolean>(false)
   
   //-----------------------------------------------Edit-Card-function
-  const handleSaveProduct = async (updatedProduct: ICard) => {
+  const handleSaveProduct = async (updatedProduct: Product) => {
     const res = await productPostSanity(updatedProduct)
    if(res){
     setIsChange(!isChange)
@@ -30,7 +30,7 @@ export default function ProductsGrid() {
   }
  
   //-----------------------------------------------Delete-Card-function
-  const handleDeleteProduct = async (updatedProduct: ICard) => {
+  const handleDeleteProduct = async (updatedProduct: Product) => {
     const res = await productDeleteSanity(updatedProduct)
     if(res){
       setIsChange(!isChange)
@@ -39,8 +39,8 @@ export default function ProductsGrid() {
   
   //-----------------------------------------------Create-Card-function
 
-  const [createProduct, setCreateProduct] = useState<ICard | null>()
-  const handleCreateProduct = async (updatedProduct: ICard) => {
+  const [createProduct, setCreateProduct] = useState<Product | null>()
+  const handleCreateProduct = async (updatedProduct: Product) => {
     try {
       const res = await productCreateSanity(updatedProduct);
       if (res) {
@@ -54,8 +54,8 @@ export default function ProductsGrid() {
 
     //----------------------------------------------- States
 
-  const [productArray, setProductsArray] = useState<ICard[]>([])
-  const [showProductArray, setShowProductArray] = useState<ICard[]>([])
+  const [productArray, setProductsArray] = useState<Product[]>([])
+  const [showProductArray, setShowProductArray] = useState<Product[]>([])
   const [search, setSearch] = useState<string>()
   const [categoryDropdown, setCategoryDropdown] = useState<string[]>([])
 
@@ -105,14 +105,10 @@ export default function ProductsGrid() {
           
           <Button onClick={(e) => {e.stopPropagation(); setCreateProduct({
     _id: '',
-    productName: '',
+    name: '',
     price: 0,
-    inventory: 0,
     category: '',
-    description: '',
     image: '',
-     colors: '',
-    status: ''
   })}}>
             Create new
           </Button>
@@ -162,16 +158,15 @@ export default function ProductsGrid() {
               <div className="aspect-square relative">
                 <Image
                   src={product.image || "/placeholder.svg"}
-                  alt={product.productName}
+                  alt={product.name}
                   fill
                   className="object-cover"
                 />
               </div>
             </CardHeader>
             <CardContent className="p-4">
-              <CardTitle className="line-clamp-1">{product.productName}</CardTitle>
+              <CardTitle className="line-clamp-1">{product.name}</CardTitle>
               <p className="text-lg font-semibold">${product.price.toFixed(2)}</p>
-              <p className="text-sm text-muted-foreground mt-1">Stock: {product.inventory}</p>
             </CardContent>
             <CardFooter className="border-t p-4">
               <div className="flex w-full gap-2">
