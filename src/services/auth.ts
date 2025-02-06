@@ -2,8 +2,8 @@
 
 import { cookies } from "next/headers";
 
-const VALID_USERNAME = process.env.NEXT_PUBLIC_VALID_USERNAME
-const VALID_PASSWORD = process.env.NEXT_PUBLIC_VALID_PASSWORD
+const VALID_USERNAME =process.env.NEXT_PUBLIC_VALID_USERNAME
+const VALID_PASSWORD =process.env.NEXT_PUBLIC_VALID_PASSWORD
 
 export async function signIn(username: string, password: string) {
 
