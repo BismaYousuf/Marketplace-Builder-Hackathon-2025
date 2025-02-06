@@ -1,5 +1,6 @@
 //src\app\data\products.ts
 export interface Product {
+  productName: string | number | readonly string[] | undefined;
   id: number;
   name: string;
   price: number;

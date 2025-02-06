@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { ShoppingBag, Search, UserRound, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { UserButton } from '@clerk/nextjs';
 
 interface NavItemProps {
   href: string;
@@ -48,6 +49,7 @@ export function Header() {
               <NavItem href="/aboutSection">About</NavItem>
               <NavItem href="/Ourshop">Shop</NavItem>
               <NavItem href="/signupForm">Contact</NavItem>
+            
             </div>
             <div className="flex items-center space-x-4">
               <Search className="text-white cursor-pointer" size={20} />
@@ -77,10 +79,12 @@ export function Header() {
                 <UserRound className="text-white cursor-pointer" size={20} />
               </Link>
               <ShoppingBag className="text-white cursor-pointer" size={20} />
+              <UserButton/>
             </div>
           </div>
         )}
       </div>
+   
     </nav>
   );
 }

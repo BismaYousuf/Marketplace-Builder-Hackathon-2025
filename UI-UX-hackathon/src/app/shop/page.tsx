@@ -16,7 +16,7 @@ interface Product {
   _id: string;
   name: string;
   price: number;
-  image: string; // Now a string URL
+  image: string; 
   category: string;
 }
 

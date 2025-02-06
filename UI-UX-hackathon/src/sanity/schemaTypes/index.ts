@@ -5,9 +5,11 @@ import foodcategory from './landingPage-Sections/foodcategory'
 import whychooseus from './landingPage-Sections/whychooseus'
 import foods from './foods'
 import chefs from './chefs'
+import userSchema from './user'
+
 // import reviews from './reviews'
 
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [landingPage, hero, foodcategory, whychooseus, foods, chefs, ],
+  types: [landingPage, hero, foodcategory, whychooseus, foods, chefs, userSchema ],
 }
