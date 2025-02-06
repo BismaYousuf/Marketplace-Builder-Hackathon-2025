@@ -162,8 +162,3 @@ export default function ContactForm() {
   )
 }
 
-
-
-function send(arg0: string, arg1: string, arg2: { from_name: string; from_email: string; from_phone: string; message: string }, NEXT_PUBLIC_EMAILJS_PUBLIC_KEY: string | undefined) {
-  throw new Error("Function not implemented.")
-}
