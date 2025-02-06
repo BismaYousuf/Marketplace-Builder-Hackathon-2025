@@ -181,10 +181,12 @@ export default function CheckoutForm() {
               {/* Order Items */}
               {products.map((product) => (
                 <div key={product.id} className="flex gap-4">
-                  <img
+                  <Image
                     src={product.image || "/placeholder.svg"}
                     alt={product.name}
-                    className="h-20 w-20 object-cover rounded-md"
+                    width={80}
+                    height={80}
+                    className="object-cover rounded-md"
                   />
                   <div>
                     <h3 className="font-bold text-gray-900">{product.name}</h3>
